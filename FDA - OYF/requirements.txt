@@ -1,0 +1,6 @@
+datetime
+path
+tk
+tkcalendar
+mysql-connector-python
+
