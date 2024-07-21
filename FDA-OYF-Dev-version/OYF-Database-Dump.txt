@@ -1,0 +1,17 @@
+
+CMD Commamd : 
+
+Inside default Directory - C:\Users\lavan>
+
+"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump" -u root -p food_delivery_application > Food_Delivery_Application.sql
+
+Enter password: mysqlrootpwd
+
+_________________________________________________________________________________________________________________________________
+
+On Client PC 
+
+Inside Client's Default Directory - C:\Users\ (User) >
+
+"C:\Program Files\MySQL\MySQL Server (any) \bin\mysqldump" -u root -p food_delivery_application < (Path If Any)Food_Delivery_Application.sql
+
