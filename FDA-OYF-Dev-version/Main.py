@@ -7468,46 +7468,51 @@ ASSETS_PATH7 = OUTPUT_PATH7 / Path(r"build\assets\frame7")
 OUTPUT_PATH8 = Path(__file__).parent
 ASSETS_PATH8 = OUTPUT_PATH8 / Path(r"build\assets\frame8")
 
-#Establish MySql Connection and Cursor 
-con = sql.connect(host='localhost',user = 'root',password = 'mysqlrootpwd',database='food_delivery_application')
-cur = con.cursor()
+try : 
+    #Establish MySql Connection and Cursor 
+    con = sql.connect(host='localhost',user = 'root',password = 'mysqlrootpwd',database='food_delivery_application')
+    cur = con.cursor()
+    #opening readme file to check if it exists
+    file = open('ReadMe.txt')
+    
+    #creating a Window      
+    window = Tk()
 
+    #config widow
+    window.title("Jishnu's Food Delivery Application")
+    window.configure(bg = "#836767")
+    window.resizable(False, False)
+    oyf_icon = PhotoImage(file= relative_to_assets('icon.png'))
+    window.iconphoto(False, oyf_icon)
 
-#creating a Window      
-window = Tk()
+    # Predefined Global Variables : 
+    Current_CustID = 0                  # Current CustId 
+    Current_Username = ''               # Current Username 
+    Current_User_isAdmin = 'False'      # Current Username 
+    Selected_Restaurant = ''            # Current Restaurant
+    dict_items = {}                     # Current Dictionary of Items ()
+    label_list = []                     # Label List for creating Labels in canvas4 (frame3)
+    spinbox_list = []                   # Spinbox List for creating SpinBoxes in canvas4 (frame3)                     
+    orderitemslabel_list = []           # Label List for creating labels 
+    orderitems_price_label_list = []    # Label Liat for creating price labels
+    Item_Total = 0                      # Amount
+    GST = 0                             # Goods and Service Tax - Amount
+    Platform_Fee = 0                    # Platform Fee - 5%
+    Grand_Total = 0                     # Grand Total - Item Total + GST + Platform Fee
 
-#config widow
-window.title("Jishnu's Food Delivery Application")
-window.configure(bg = "#836767")
-window.resizable(False, False)
+    # StrikeThrough Font 
+    strikethrough_font = font.Font(window, family="Inika", size=18, overstrike=1)
 
-oyf_icon = PhotoImage(file= relative_to_assets('icon.png'))
-window.iconphoto(False, oyf_icon)
+    # Calling the Login page
+    logincanvas()
 
-# Predefined Global Variables : 
+    window.mainloop()
 
-Current_CustID = 0                  # Current CustId 
-Current_Username = ''               # Current Username 
-Current_User_isAdmin = 'False'      # Current Username 
-Selected_Restaurant = ''            # Current Restaurant
-dict_items = {}                     # Current Dictionary of Items ()
-label_list = []                     # Label List for creating Labels in canvas4 (frame3)
-spinbox_list = []                   # Spinbox List for creating SpinBoxes in canvas4 (frame3)                     
-orderitemslabel_list = []           # Label List for creating labels 
-orderitems_price_label_list = []    # Label Liat for creating price labels
-Item_Total = 0                      # Amount
-GST = 0                             # Goods and Service Tax - Amount
-Platform_Fee = 0                    # Platform Fee - 5%
-Grand_Total = 0                     # Grand Total - Item Total + GST + Platform Fee
-
-# StrikeThrough Font 
-
-strikethrough_font = font.Font(window, family="Inika", size=18, overstrike=1)
-
-# Calling the Login page
-logincanvas()
-
-window.mainloop()
+except Exception as error :
+    
+    root = Tk()
+    root.withdraw()
+    messagebox.showerror('Application Error',f"Couldn't Open Application :\n{error}")
 
 
 
